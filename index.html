@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/minecraft-3');
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            color: white;
+        }
+        .full-screen {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .relative-pos {
+            position: relative;
+        }
+
+        @keyframes grow {
+            0% {
+                transform: scale(1.1) rotate(340deg);
+            }
+            
+            100% {
+                transform: scale(1) rotate(340deg);
+            }
+        }
+
+        .splash {
+            position: absolute;;
+            top: 38vh;
+            right: 21vw;
+            font-size: 2.4cqi;
+            font-family: 'Minecraft';
+            color: yellow;
+            animation: grow 0.5s ease-in-out infinite alternate;
+
+        }
+
+        .main-logo {
+            width: 50vw;
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .brand-logo {
+            width: 15%;
+            height: auto;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .black-bg {
+            background-color: black;
+        }
+
+        .site-wrapper {
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        .center {
+            padding-top: 25vh;
+        }
+        .padding {
+            padding-top: 15vh;
+        }
+        
+        .download-button:before {
+            font-family: 'Minecraft';
+            content: 'Baixar instalador';
+        }
+
+        .download-button:hover {
+            background-image: url('https://aiquedificil.com.br/modpack/assets/button_highlighted.png');
+        }
+
+        .download-button {
+            background-image: url('https://aiquedificil.com.br/modpack/assets/button.png');
+            height: 50px;
+            width: 500px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function click() {
+            var audio = new Audio('https://aiquedificil.com.br/modpack/click.mp3');
+            audio.play();
+            window.open('https://aiquedificil.com.br/modpack/aqd-tig-installer-1.0.1-21.1.215-neoforge.exe');
+        }
+    </script>
+    <div class="full-screen black-bg site-wrapper">
+        <div class="container center">
+            <div class="relative container">
+                <img class="main-logo" src="https://aiquedificil.com.br/modpack/assets/tccisgone_4.png" alt="">
+                <p class="splash">ninja twink with a fat cock</p>
+            </div>
+        </div>
+        <div class="container padding">
+            <div class="download-button" id="download-button">
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        document.getElementById('download-button').addEventListener("click", async () => {click()})
+
+    </script>
+</body>
+</html>
