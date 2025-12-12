@@ -11,7 +11,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            /* overflow: hidden; */
             color: white;
             
         }
@@ -31,6 +31,16 @@
             
             100% {
                 transform: scale(1) rotate(340deg);
+            }
+        }
+
+        @keyframes unrotated_grow {
+            0% {
+                transform: scale(1.1);
+            }
+            
+            100% {
+                transform: scale(1);
             }
         }
 
@@ -61,6 +71,8 @@
         .container {
             display: flex;
             justify-content: center;
+            align-items: center;
+            align-content: center;
         }
 
         .black-bg {
@@ -78,7 +90,7 @@
             padding-top: 25vh;
         }
         .padding {
-            padding-top: 15vh;
+            padding-top: 1vh;
         }
         
         .download-button:hover {
@@ -96,6 +108,16 @@
             text-align: center;
             align-content: center;
         }
+
+        .modpack-button:hover {
+            cursor: pointer;
+            animation: unrotated_grow 0.6s ease-in-out infinite alternate;
+        }
+
+        .modpack-button {
+        }
+
+
     </style>
 </head>
 <body>
@@ -106,12 +128,44 @@
             window.open('https://modpack.aiquedificil.com.br/aqd-tig-installer-1.0.1-21.1.215-neoforge.exe');
             audio = new Audio('https://modpack.aiquedificil.com.br/click.mp3');
         }
+
+        function hover(e) {            
+            e.srcElement.src = "https://modpack.aiquedificil.com.br/assets/book_open.png"
+        }
+
+        function view_trailer() {
+            audio.play();
+            //window.open('https://modpack.aiquedificil.com.br/trailer.mp4');
+            audio = new Audio('https://modpack.aiquedificil.com.br/click.mp3');
+            document.getElementById("logo").style="display: none"
+            document.getElementById("trailer").style=""
+            document.getElementById("video").play()
+            document.getElementById("video").onended = () => {
+                document.getElementById("logo").style=""
+                document.getElementById("trailer").style="display: none"
+            }
+        }
+
+        function unhover(e) {    
+            console.log(e);
+            e.srcElement.src = "https://modpack.aiquedificil.com.br/assets/book_closed.png"
+        }
     </script>
     <div class="full-screen black-bg site-wrapper">
         <div class="container center">
-            <div class="relative container">
+            <div class="relative container" id="logo">
                 <img class="main-logo" src="https://modpack.aiquedificil.com.br/assets/tccisgone_4.png" alt="">
                 <p class="splash">ninja twink with a fat cock</p>
+            </div>
+            <div class="container" id="trailer" style="display: none;">
+                    <video id="video" controls width="605vw" src="https://modpack.aiquedificil.com.br/assets/trailer.mp4">
+                        
+                    </video>
+            </div>
+        </div>
+        <div class="container" style="padding-top: 7vh;">
+            <div class="container">
+                <img src="https://modpack.aiquedificil.com.br/assets/book_closed.png" alt="" class="modpack-button" id="modpack-button">
             </div>
         </div>
         <div class="container padding">
@@ -124,6 +178,10 @@
 
     <script>
         document.getElementById('download-button').addEventListener("click", async () => {click()})
+        document.getElementById('modpack-button').addEventListener("mouseover", async (e) => {hover(e)})
+        document.getElementById('modpack-button').addEventListener("mouseout", async (e) => {unhover(e)})
+        document.getElementById('modpack-button').addEventListener("click", async (e) => {view_trailer()})
+
 
     </script>
 </body>
